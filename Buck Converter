@@ -1,0 +1,17 @@
+int m ; // initialize variable m
+int n ; // initialize variable n
+void setup()
+{
+pinMode(6,OUTPUT) ; 
+pinMode(A1,INPUT) ; 
+TCCR0B = TCCR0B & B11111000 | B00000001 ; 
+Serial.begin(9600) ;
+}
+void loop()
+{
+m= analogRead(A1) ;
+n= map(m,0,1023,0,255) ; 
+analogWrite(6,n) ;
+Serial.print(" PWM Value ") ;
+Serial.println(n) ;
+}
